@@ -22,5 +22,7 @@ while True:
             sys.exit()
 
     screen.fill(DARK_BLUE)
+    game_grid.draw(screen)
+
     pygame.display.update()
     clock.tick(FPS)
