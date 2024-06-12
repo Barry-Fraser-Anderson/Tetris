@@ -1,7 +1,6 @@
 import pygame
 import sys
-from grid import Grid
-from blocks import *
+from game import Game
 
 # Constants
 WIDTH, HEIGHT = 300, 600
@@ -13,10 +12,8 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Python Tetris")
 
 clock = pygame.time.Clock()
-game_grid = Grid()
-game_grid.print_grid()
 
-block = TBlock()
+game = Game()
 
 while True:
     for event in pygame.event.get():
@@ -25,8 +22,7 @@ while True:
             sys.exit()
 
     screen.fill(DARK_BLUE)
-    game_grid.draw(screen)
-    block.draw(screen)
+    game.draw(screen)
 
     pygame.display.update()
     clock.tick(FPS)
