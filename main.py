@@ -16,6 +16,8 @@ clock = pygame.time.Clock()
 game_grid = Grid()
 game_grid.print_grid()
 
+block = TBlock()
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -24,6 +26,7 @@ while True:
 
     screen.fill(DARK_BLUE)
     game_grid.draw(screen)
+    block.draw(screen)
 
     pygame.display.update()
     clock.tick(FPS)
