@@ -1,13 +1,14 @@
 import pygame
 import sys
 from grid import Grid
+from blocks import *
 
-pygame.init()
-
+# Constants
 WIDTH, HEIGHT = 300, 600
 FPS = 60
 DARK_BLUE = (44, 44, 127)
 
+pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Python Tetris")
 
