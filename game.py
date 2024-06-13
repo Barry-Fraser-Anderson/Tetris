@@ -2,6 +2,8 @@ from grid import Grid
 from blocks import *
 import random
 
+GRID_OFFSET = 10
+
 
 class Game:
     def __init__(self):
@@ -110,4 +112,11 @@ class Game:
 
     def draw(self, screen):
         self.grid.draw(screen)
-        self.current_block.draw(screen)
+        self.current_block.draw(screen, GRID_OFFSET + 1, GRID_OFFSET + 1)
+
+        if self.next_block.id == 3:
+            self.next_block.draw(screen, 255, 290)
+        elif self.next_block.id == 4:
+            self.next_block.draw(screen, 255, 280)
+        else:
+            self.next_block.draw(screen, 270, 270)
