@@ -1,6 +1,8 @@
 import pygame
 from colors import Colors
 
+GRID_OFFSET = 10
+
 
 class Grid:
     def __init__(self):
@@ -61,8 +63,8 @@ class Grid:
             for col in range(self.num_cols):
                 cell_value = self.grid[row][col]
                 cell_rect = pygame.Rect(
-                    col * self.cell_size + 1,
-                    row * self.cell_size + 1,
+                    col * self.cell_size + 1 + GRID_OFFSET,
+                    row * self.cell_size + 1 + GRID_OFFSET,
                     self.cell_size - 1,
                     self.cell_size - 1,
                 )

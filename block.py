@@ -2,6 +2,8 @@ from colors import Colors
 import pygame
 from position import Position
 
+GRID_OFFSET = 10
+
 
 class Block:
     def __init__(self, id):
@@ -41,8 +43,8 @@ class Block:
         tiles = self.get_cell_positions()
         for tile in tiles:
             tile_rect = pygame.Rect(
-                tile.col * self.cell_size + 1,
-                tile.row * self.cell_size + 1,
+                tile.col * self.cell_size + 1 + GRID_OFFSET,
+                tile.row * self.cell_size + 1 + GRID_OFFSET,
                 self.cell_size - 1,
                 self.cell_size - 1,
             )

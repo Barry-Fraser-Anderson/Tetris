@@ -3,7 +3,7 @@ import sys
 from game import Game
 
 # Constants
-WIDTH, HEIGHT = 300, 600
+WIDTH, HEIGHT = 500, 620
 FPS = 60
 DARK_BLUE = (44, 44, 127)
 
