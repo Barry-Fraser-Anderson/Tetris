@@ -6,8 +6,19 @@ from game import Game
 WIDTH, HEIGHT = 500, 620
 FPS = 60
 DARK_BLUE = (44, 44, 127)
+LIGHT_BLUE = (100, 100, 255)
+WHITE = (255, 255, 255)
 
 pygame.init()
+
+title_font = pygame.font.Font(None, 40)
+score_surface = title_font.render("Score", True, WHITE)
+next_surface = title_font.render("Next", True, WHITE)
+gameover_surface = title_font.render("GAME OVER", True, WHITE)
+
+score_rect = pygame.Rect(320, 55, 170, 60)
+next_rect = pygame.Rect(320, 215, 170, 180)
+
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Python Tetris")
 
@@ -40,6 +51,14 @@ while True:
             game.move_down()
 
     screen.fill(DARK_BLUE)
+    screen.blit(score_surface, (365, 20, 50, 50))
+    screen.blit(next_surface, (375, 180, 50, 50))
+
+    if game.game_over:
+        screen.blit(gameover_surface, (320, 450, 50, 50))
+
+    pygame.draw.rect(screen, LIGHT_BLUE, score_rect, 0, 10)
+    pygame.draw.rect(screen, LIGHT_BLUE, next_rect, 0, 10)
     game.draw(screen)
 
     pygame.display.update()
