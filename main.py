@@ -45,11 +45,14 @@ while True:
                 game.move_right()
             if event.key == pygame.K_DOWN and not game.game_over:
                 game.move_down()
+                game.update_score(0, 1)
             if event.key == pygame.K_UP and not game.game_over:
                 game.rotate()
         if event.type == GAME_UPDATE and not game.game_over:
             game.move_down()
 
+    # Drawing
+    score_value_surface = title_font.render(str(game.score), True, WHITE)
     screen.fill(DARK_BLUE)
     screen.blit(score_surface, (365, 20, 50, 50))
     screen.blit(next_surface, (375, 180, 50, 50))
@@ -58,6 +61,12 @@ while True:
         screen.blit(gameover_surface, (320, 450, 50, 50))
 
     pygame.draw.rect(screen, LIGHT_BLUE, score_rect, 0, 10)
+    screen.blit(
+        score_value_surface,
+        score_value_surface.get_rect(
+            centerx=score_rect.centerx, centery=score_rect.centery
+        ),
+    )
     pygame.draw.rect(screen, LIGHT_BLUE, next_rect, 0, 10)
     game.draw(screen)
 
