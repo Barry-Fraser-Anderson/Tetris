@@ -30,13 +30,13 @@ class Game:
 
     def update_score(self, lines_cleared, move_down_points):
         if lines_cleared == 1:
-            self.score += 40
-        elif lines_cleared == 2:
             self.score += 100
-        elif lines_cleared == 3:
+        elif lines_cleared == 2:
             self.score += 300
+        elif lines_cleared == 3:
+            self.score += 500
         elif lines_cleared == 4:
-            self.score += 1200
+            self.score += 800
         self.score += move_down_points
 
     def get_random_block(self):
