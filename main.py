@@ -26,7 +26,7 @@ clock = pygame.time.Clock()
 
 game = Game()
 
-drop_ms = 200
+drop_ms = 500
 GAME_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(GAME_UPDATE, drop_ms)
 
