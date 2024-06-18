@@ -1,5 +1,5 @@
 import pygame
-import random, copy
+import random
 from grid import Grid
 from blocks import *
 
@@ -9,15 +9,6 @@ GRID_OFFSET = 10
 class Game:
     def __init__(self):
         self.grid = Grid()
-        self.blocks = [
-            IBlock(),
-            JBlock(),
-            LBlock(),
-            OBlock(),
-            SBlock(),
-            TBlock(),
-            ZBlock(),
-        ]
         self.current_block = self.get_random_block()
         self.next_block = self.get_random_block()
         self.game_over = False
@@ -40,8 +31,22 @@ class Game:
         self.score += move_down_points
 
     def get_random_block(self):
-        block = copy.deepcopy(random.choice(self.blocks))
-        return block
+        id = random.randint(1, 7)
+        match id:
+            case 1:
+                return IBlock()
+            case 2:
+                return JBlock()
+            case 3:
+                return LBlock()
+            case 4:
+                return OBlock()
+            case 5:
+                return SBlock()
+            case 6:
+                return TBlock()
+            case 7:
+                return ZBlock()
 
     def move_left(self):
         self.current_block.move(0, -1)
@@ -74,15 +79,6 @@ class Game:
 
     def reset(self):
         self.grid.reset()
-        self.blocks = [
-            IBlock(),
-            JBlock(),
-            LBlock(),
-            OBlock(),
-            SBlock(),
-            TBlock(),
-            ZBlock(),
-        ]
         self.current_block = self.get_random_block()
         self.next_block = self.get_random_block()
         self.score = 0
