@@ -2,12 +2,10 @@
 
 A Python exercise
 
-Inspired by the Youtube video: Creating Tetris in Python with pygame - Beginner Tutorial (OOP)
-
-[https://www.youtube.com/watch?v=nF_crEtmpBo]
+Inspired by several Youtube videos.
 
 # Description
-An implementation of the game Tetris using Python 3 and pygame.
+My version of the game Tetris using Python 3 and pygame.
 Sound-effects and in-game music are also supported.
 
 # Screenshots
