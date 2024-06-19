@@ -37,7 +37,6 @@ while True:
             sys.exit()
         if event.type == pygame.KEYDOWN:
             if game.game_over:
-                game.game_over = False
                 game.reset()
             if event.key == pygame.K_LEFT and not game.game_over:
                 game.move_left()

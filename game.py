@@ -9,10 +9,8 @@ GRID_OFFSET = 10
 class Game:
     def __init__(self):
         self.grid = Grid()
-        self.current_block = self.get_random_block()
-        self.next_block = self.get_random_block()
-        self.game_over = False
-        self.score = 0
+        self.reset()
+
         self.rotate_sound = pygame.mixer.Sound("Sounds/rotate.ogg")
         self.clear_sound = pygame.mixer.Sound("Sounds/clear.ogg")
 
@@ -74,14 +72,17 @@ class Game:
         if rows_cleared > 0:
             self.clear_sound.play()
             self.update_score(rows_cleared, 0)
+            self.total_rows_cleared += rows_cleared
         if not self.block_fits():
             self.game_over = True
 
     def reset(self):
         self.grid.reset()
+        self.game_over = False
         self.current_block = self.get_random_block()
         self.next_block = self.get_random_block()
         self.score = 0
+        self.total_rows_cleared = 0
 
     def block_fits(self):
         tiles = self.current_block.get_cell_positions()
