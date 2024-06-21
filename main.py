@@ -31,10 +31,6 @@ clock = pygame.time.Clock()
 
 game = Game()
 
-drop_ms = 500
-GAME_UPDATE = pygame.USEREVENT
-pygame.time.set_timer(GAME_UPDATE, drop_ms)
-
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -52,7 +48,7 @@ while True:
                 game.update_score(0, 1)
             if event.key == pygame.K_UP and not game.game_over:
                 game.rotate()
-        if event.type == GAME_UPDATE and not game.game_over:
+        if event.type == game.GAME_UPDATE and not game.game_over:
             game.move_down()
 
     # Drawing
