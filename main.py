@@ -13,11 +13,16 @@ pygame.init()
 
 title_font = pygame.font.Font(None, 40)
 score_surface = title_font.render("Score", True, WHITE)
+level_surface = title_font.render("Level", True, WHITE)
 next_surface = title_font.render("Next", True, WHITE)
 gameover_surface = title_font.render("GAME OVER", True, WHITE)
 
-score_rect = pygame.Rect(320, 55, 170, 60)
-next_rect = pygame.Rect(320, 215, 170, 180)
+score_y = 20
+level_y = 130
+next_y = 270
+score_rect = pygame.Rect(320, score_y + 35, 170, 60)
+level_rect = pygame.Rect(320, level_y + 35, 170, 60)
+next_rect = pygame.Rect(320, next_y + 35, 170, 180)
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Python Tetris")
@@ -51,14 +56,18 @@ while True:
             game.move_down()
 
     # Drawing
-    score_value_surface = title_font.render(str(game.score), True, WHITE)
+
     screen.fill(DARK_BLUE)
-    screen.blit(score_surface, (365, 20, 50, 50))
-    screen.blit(next_surface, (375, 180, 50, 50))
+    score_value_surface = title_font.render(str(game.score), True, WHITE)
+    screen.blit(score_surface, (365, score_y, 50, 50))
+    level_value_surface = title_font.render(str(game.level), True, WHITE)
+    screen.blit(level_surface, (365, level_y, 50, 50))
+    screen.blit(next_surface, (375, next_y, 50, 50))
 
     if game.game_over:
-        screen.blit(gameover_surface, (320, 450, 50, 50))
+        screen.blit(gameover_surface, (320, 500, 50, 50))
 
+    # Score
     pygame.draw.rect(screen, LIGHT_BLUE, score_rect, 0, 10)
     screen.blit(
         score_value_surface,
@@ -66,6 +75,17 @@ while True:
             centerx=score_rect.centerx, centery=score_rect.centery
         ),
     )
+
+    # Level
+    pygame.draw.rect(screen, LIGHT_BLUE, level_rect, 0, 10)
+    screen.blit(
+        level_value_surface,
+        level_value_surface.get_rect(
+            centerx=level_rect.centerx, centery=level_rect.centery
+        ),
+    )
+
+    # Next
     pygame.draw.rect(screen, LIGHT_BLUE, next_rect, 0, 10)
     game.draw(screen)
 

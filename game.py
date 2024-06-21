@@ -82,7 +82,13 @@ class Game:
         self.current_block = self.get_random_block()
         self.next_block = self.get_random_block()
         self.score = 0
+        self.level = 1
         self.total_rows_cleared = 0
+
+    def level_check(self):
+        if self.total_rows_cleared >= self.level * 10:
+            self.level += 1
+            self.total_rows_cleared = 0
 
     def block_fits(self):
         tiles = self.current_block.get_cell_positions()
@@ -110,8 +116,8 @@ class Game:
         self.current_block.draw(screen, GRID_OFFSET + 1, GRID_OFFSET + 1)
 
         if self.next_block.id == 1:
-            self.next_block.draw(screen, 255, 290)
+            self.next_block.draw(screen, 255, 380)
         elif self.next_block.id == 4:
-            self.next_block.draw(screen, 255, 280)
+            self.next_block.draw(screen, 255, 370)
         else:
-            self.next_block.draw(screen, 270, 270)
+            self.next_block.draw(screen, 270, 360)
