@@ -1,11 +1,12 @@
 # Python Tetris
 
-A Python exercise
+A Python OOP exercise
 
 Inspired by several Youtube videos
 
 # Description
 My version of the game Tetris using Python 3 and pygame.
+
 Sound-effects and in-game music are supported.
 
 Game speed and row score increase every level. 
