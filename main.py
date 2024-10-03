@@ -8,14 +8,17 @@ FPS = 60
 DARK_BLUE = (44, 44, 127)
 LIGHT_BLUE = (100, 100, 255)
 WHITE = (255, 255, 255)
+RED = (255, 0, 0)
 
 pygame.init()
 
+# Displayed strings
 title_font = pygame.font.Font(None, 40)
 score_surface = title_font.render("Score", True, WHITE)
 level_surface = title_font.render("Level", True, WHITE)
 next_surface = title_font.render("Next", True, WHITE)
-gameover_surface = title_font.render("GAME OVER", True, WHITE)
+gameover_font = pygame.font.Font(None, 60)
+gameover_surface = gameover_font.render("GAME\nOVER", True, RED)
 
 score_y = 20
 level_y = 130
@@ -31,6 +34,7 @@ clock = pygame.time.Clock()
 
 game = Game()
 
+# Main game loop
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -52,7 +56,6 @@ while True:
             game.move_down()
 
     # Drawing
-
     screen.fill(DARK_BLUE)
     score_value_surface = title_font.render(str(game.score), True, WHITE)
     screen.blit(score_surface, (365, score_y, 50, 50))
